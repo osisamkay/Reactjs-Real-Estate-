@@ -120,6 +120,7 @@ class Listing extends Component {
     this.state = {
       lists: [],
       ready: 'initial',
+      search: "",
     };
   }
     componentDidMount() {
@@ -139,9 +140,24 @@ class Listing extends Component {
         })
       })
     }
+    locationChange(e){
+      this.setState({
+        search:e.target.value
+      })
+    }
+    PropertyChange(e){
+      this.setState({
+        search:e.target.value
+      })
+    }
   
   render() {
-    const { lists, ready } = this.state;
+    const { lists, ready,search } = this.state;
+    const filtered = lists.filter(list => {
+      return list.fields.Name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+    });
+    
+    
     return (
       <div>
         <Navbar />
@@ -150,21 +166,30 @@ class Listing extends Component {
             <div className="listLeft">
               <h3>Filter</h3>
               <form>
-                <input type="search" name="search" placeholder='Location' />
+                <input type="search" name="search" placeholder='Location' onChange={this.locationChange.bind(this)} />
                 <div className="Property">
-                  <select name="property-type" className="app-select" required>
+                  <select name="property-type" className="app-select" required >
                     <option data-display="Property Type">Property Type</option>
-                    <option value="1">Property type 1</option>
-                    <option value="2">Property type 2</option>
-                    <option value="3">Property type 3</option>
+                    <option value="1">Modern Luxury Townhouse</option>
+                    <option value="2">terraced duplex</option>
+                    <option value="3">Urban Townhouse</option>
+                    <option value="3">Downtown Condo</option>
+                    <option value="3">Modern Beach House</option>
+                    <option value="3"> Luxury Hamptons Home</option>
+                    <option value="3"> Detached Duplex</option>
+                    <option value="3"> Semi-Detached Duplex</option>
+                    <option value="3"> Detached Bungalow</option>
+                    
                   </select>
                 </div>
                 <div className="bedrooms">
-                  <select name="bedroom" className="app-select" required>
+                  <select name="bedroom" className="app-select" required onChange={this.PropertyChange.bind(this)}>
                     <option data-display="Bedrooms">Bedrooms</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option value="1">1BR</option>
+                    <option value="2">2BR</option>
+                    <option value="3">3BR</option>
+                    <option value="4">4BR</option>
+                    <option value="5">5BR</option>
                   </select>
                 </div>
                 <div className="PriceRange">
@@ -181,12 +206,12 @@ class Listing extends Component {
             <ListRight>
             { lists.length ? '' : 'There are no list items'  }
               { ready === 'loading' ? (<img src={Loader} className='Image' alt="loader"/>) : '' }
-              { lists.map(list => (
+              { filtered.map(list => (
                 <div key={list.id}>
                   <Link to={`/Listview/${list.id}`}>
                     <ListItems image={list.fields.icon ? list.fields.icon[0].url : ''} >
                       <h4>{list.fields.Asking}</h4>
-                      <h5><Link to={`/Listview/${list.id}`}>{list.fields.Name}</Link></h5>
+                      <h5>{list.fields.Name}</h5>
                       <Info>
                         <h6>Bedrooms: {list.fields.Bedrooms}</h6>
                         <h6>Bathrooms: {list.fields.Bathrooms}</h6>

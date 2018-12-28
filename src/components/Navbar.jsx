@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Navlogo from '../../assets/iconfinder_menu-alt_134216.png';
 
 const Nav = styled.div`
+  
   a img{
     width: 200px;
     height: 30px;
@@ -126,7 +127,7 @@ class Navbar extends Component{
             <Link to="/">Home</Link>
             <Link to="/Listings">Listings</Link>
             <Link to="/Sellpage">Sell</Link>
-            <a href="#Contact">Contact Us</a>
+            <Link to="/contact">Contact Us</Link>
             <Link to="/sign">Sign in</Link>
           </div>
         </div>
@@ -134,7 +135,7 @@ class Navbar extends Component{
           <Link to="/"><img src={Logo} className='logo2' alt="logo" /></Link>
           <Link to="/Listings">Listings</Link>
           <Link to="/Sellpage">Sell</Link>
-          <a href="#Contact">Contact Us</a>
+          <Link to="/contact">Contact Us</Link>
           <Link to="/sign">
             <button>Sign in</button>
           </Link>

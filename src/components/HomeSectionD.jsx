@@ -59,7 +59,7 @@ const Form = styled.div`
 `;
 
 const HomeSectionD = () => (
-  <SectionD id="Contact">
+  <SectionD>
     <SectionDgroup>
       <div className="info">
         <h4>Visit Our Office</h4>

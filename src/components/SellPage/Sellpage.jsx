@@ -8,7 +8,28 @@ import Footer from '../Footer';
 const SellpageStyle = styled.div`
   width:90%;
   margin:0px auto;
-  padding-top:120px;
+  padding-top:60px;
+  .sellhead{
+    text-align:center;
+    background-color: #293064;
+    color: #b7c2f1;
+    border-radius: .5em;
+    h3,h4{
+      padding:5px;
+    }
+    animation: fadeInUpBig 1000ms both;
+  }
+  @keyframes fadeInUpBig {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 2000px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
 `;
 
 const SellGroup = styled.div`
@@ -129,7 +150,7 @@ class Sellpage extends Component {
     axios({
       method: 'post',
       url: `https://api.airtable.com/v0/apprAJrG1euRf2tmF/Listings`,
-      headers: {Authorization: `Bearer keyRMRWZ0xrBXA8Yv`},
+      headers: {Authorization: `Bearer keyRMRWZ0xrBXA8Yv`, 'Content-Type':`application/json` },
       data: {
         fields: {
           Name: this.state.Name,
@@ -207,6 +228,10 @@ class Sellpage extends Component {
       <Fragment>
         <Navbar />
         <SellpageStyle>
+          <div className="sellhead">
+            <h3>Want to sell your home?</h3>
+            <h4>Lets take that burden off you, just fill the form below and we will contact you</h4>
+          </div>
           <SellGroup>
             <div className="sellLeft">
               <img src={require('../../../assets/pexels-photo-955793.jpeg')} alt="sellpage" />

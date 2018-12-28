@@ -6,6 +6,7 @@ import Listing from './components/Listings/Listing';
 import ListView from './components/Listings/ListView';
 import Sellpage from './components/SellPage/Sellpage';
 import SignupPage from './components/Signup_Login/SignupPage';
+import Contact from './components/contact/Contact';
 
 const Routes = () => (
   <Router>
@@ -16,6 +17,7 @@ const Routes = () => (
         <Route exact path="/Listings" component={Listing}></Route>
         <Route exact path="/Sellpage" component={Sellpage}></Route>
         <Route exact path="/sign" component={SignupPage}></Route>
+        <Route exact path="/contact" component={Contact}></Route>
         <Route path="/ListView/:id" component={ListView}></Route>
       </Switch>
     </Fragment>
