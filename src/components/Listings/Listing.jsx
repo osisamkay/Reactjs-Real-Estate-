@@ -68,6 +68,7 @@ const List= styled.div`
     .listgroup{
       display:grid;
       grid-template-columns:1fr 3fr;
+      grid-gap: 20px;
     }
     
     .listLeft{
@@ -89,19 +90,30 @@ const List= styled.div`
   }
   
 `;
-const ListRight=styled.div`
-  @media (min-width: 768px){
-    display:grid;
-    grid-template-columns:1fr 1fr;
+const ListRight = styled.div`
+  @media (min-width: 768px){  
+    .loader-img{
+        width: 345px;
+        margin: 0px auto;
+    }
+  }
+  .right{
+    @media (min-width: 768px){
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      
+    }
+    @media (min-width: 1440px){
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+    }
   }
   .Image {
     width: 100%;
     margin: 0px auto;
+    }
   }
-  @media (min-width: 1440px){
-    display:grid;
-    grid-template-columns:1fr 1fr 1fr;
-  }
+  
 
 `;
 
@@ -204,24 +216,28 @@ class Listing extends Component {
               </form>
             </div>
             <ListRight>
-            { lists.length ? '' : 'There are no list items'  }
-              { ready === 'loading' ? (<img src={Loader} className='Image' alt="loader"/>) : '' }
-              { filtered.map(list => (
-                <div key={list.id}>
-                  <Link to={`/Listview/${list.id}`}>
-                    <ListItems image={list.fields.icon ? list.fields.icon[0].url : ''} >
-                      <h4>{list.fields.Asking}</h4>
-                      <h5>{list.fields.Name}</h5>
-                      <Info>
-                        <h6>Bedrooms: {list.fields.Bedrooms}</h6>
-                        <h6>Bathrooms: {list.fields.Bathrooms}</h6>
-                        <h6>Area: {list.fields.Area}</h6>
-                        <h6>Status: {list.fields.Status}</h6>
-                      </Info>
-                    </ListItems>
-                  </Link>
-                </div>
-              )) }
+              <div className="loader">
+                {lists.length ? '' : (<h3>There are no list items</h3>)}
+                {ready === 'loading' ? (<div className='loader-img'><img src={Loader} className='Image' alt="loader" /></div>) : ''}
+              </div>
+              <div className="right">
+                {filtered.map(list => (
+                  <div key={list.id}>
+                    <Link to={`/Listview/${list.id}`}>
+                      <ListItems image={list.fields.icon ? list.fields.icon[0].url : ''} >
+                        <h4>{list.fields.Asking}</h4>
+                        <h5>{list.fields.Name}</h5>
+                        <Info>
+                          <h6>Bedrooms: {list.fields.Bedrooms}</h6>
+                          <h6>Bathrooms: {list.fields.Bathrooms}</h6>
+                          <h6>Area: {list.fields.Area}</h6>
+                          <h6>Status: {list.fields.Status}</h6>
+                        </Info>
+                      </ListItems>
+                    </Link>
+                  </div>
+                ))}
+              </div>
             </ListRight>
           </div>
         </List>

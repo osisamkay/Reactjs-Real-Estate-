@@ -17,7 +17,7 @@ const Headerstyle = styled.header`
     position: relative;
     top: 55px;
     text-align:center;
-    animation: swap .8s;
+    animation: intro .6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     @media (min-width:375px){
       width: 90%;
       top: i95px !important;
@@ -107,18 +107,12 @@ const Headerstyle = styled.header`
   }
 
 
-  @keyframes swap {
-    0% {
-        opacity: 0;
-        transform-origin: 0 100%;
-        transform: scale(0, 0) translate(-700px, 0px);
+  @keyframes intro{
+    0%{
+      transform: scale(0.2) translateY(-50px);
+      opacity: 0;
     }
-
-    100% {
-        opacity: 1;
-        transform-origin: 100% 100%;
-        transform: scale(1, 1) translate(0px, 0px);
-    }
+  }
 }
 `;
 

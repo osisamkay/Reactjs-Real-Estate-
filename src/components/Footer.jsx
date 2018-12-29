@@ -29,7 +29,7 @@ const Foot = styled.footer`
     }
   }
 `;
-
+ const Year= new Date().getFullYear();
 
 const Footer = () => (
   <Foot>
@@ -54,7 +54,7 @@ const Footer = () => (
       </div>
     </div>
     <p>
-      &copy; 2018, Olukayode Osisami
+      &copy;{Year} , Olukayode Osisami
     </p>
   </Foot>
 );

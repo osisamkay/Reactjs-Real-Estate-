@@ -33,7 +33,7 @@ const Nav = styled.div`
     padding: 5px;
     background-color: #b7c2f1;
     color: #293064;
-    animation: fadeInLeft 1000ms both;
+    animation: fadeInLeft .6s both;
     &:nth-child(even){
       background: #293064;
       color: #b7c2f1;

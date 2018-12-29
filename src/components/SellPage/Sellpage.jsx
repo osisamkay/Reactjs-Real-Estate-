@@ -17,18 +17,8 @@ const SellpageStyle = styled.div`
     h3,h4{
       padding:5px;
     }
-    animation: fadeInUpBig 1000ms both;
   }
-  @keyframes fadeInUpBig {
-    from {
-        opacity: 0;
-        transform: translate3d(0, 2000px, 0);
-    }
-
-    to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-    }
+ 
 }
 `;
 
@@ -132,18 +122,6 @@ class Sellpage extends Component {
       Tag: " ",
       DateListed:" "
     };
-    // this.NewListing = this.NewListing.bind(this);
-    // this.Name = this.Name.bind(this);
-    // this.inputSummary = this.inputSummary.bind(this);
-    // this.inputNumber = this.inputNumber.bind(this);
-    // this.inputIcon = this.inputIcon.bind(this);
-    // this.inputAsk = this.inputAsk.bind(this);
-    // this.inputBed = this.inputBed.bind(this);
-    // this.inputBath = this.inputBath.bind(this);
-    // this.inputArea = this.inputArea.bind(this);
-    // this.inputTag = this.inputTag.bind(this);
-    // this.inputDate = this.inputDate.bind(this);
-    
   }
   NewListing(event) {
     event.preventDefault();
@@ -155,7 +133,7 @@ class Sellpage extends Component {
         fields: {
           Name: this.state.Name,
           Summary:this.state.Summary,
-          // icon: [{}],
+          icon: [{}],
           Bedrooms:this.state.Bedrooms,
           Asking:Number(this.state.Asking) ,
           Bathrooms: this.state.Bathrooms,

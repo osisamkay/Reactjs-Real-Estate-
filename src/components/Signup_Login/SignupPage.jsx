@@ -7,7 +7,7 @@ import back from '../../../assets/pexels-photo-534233.jpeg'
 const Form = styled.form`
   width:90%;
   height:50%;
-  background-color: rgba(183, 194, 241, .5);
+  background-color: rgba(183, 194, 241, .8);
   margin:0px auto;
   border-radius: 1em;
   h4{
@@ -53,7 +53,7 @@ const Show = styled.div`
   }
 `;
 const LogForm = styled.form`
-  background-color: rgba(3, 18, 73, .5);
+  background-color: rgba(3, 18, 73, .8);
   color: #b7c2f1;
   width: 90%;
   margin: 0px auto;
@@ -117,7 +117,7 @@ const LogForm = styled.form`
 `;
 
 const FormGrid = styled.div`
-  background-image:url('../../../assets/pexels-photo-534233.jpeg');
+  background: url(${back})no-repeat center center/cover;
   background-size:cover;
   @media(min-width:768px){
     .left{
