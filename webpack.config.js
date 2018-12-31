@@ -1,10 +1,17 @@
 require('dotenv').config();
-// const webpack = require('webpack');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 console.log(process.env.NODE_ENV);
+
+const entries = ['./src/index.js'];
+
+if(process.env.NODE_ENV === 'development') {
+  entries.push('webpack-hot-middleware/client?path=http://localhost:7800/__webpack_hmr&timeout=4000');
+}
+
 const config = {
   mode: 'development',
-  entry: ['./src/index.js'],
+  entry: entries,
   output: {
     filename: 'bundle.js',
     path: `${__dirname}/docs`,
@@ -48,7 +55,7 @@ const config = {
       template: 'src/index.html',
       favicon: 'assets/favicon.ico',
     }),
-    // new webpack.EnvironmentPlugin(['NODE_ENV', 'API_KEY', 'HOST']),
+    new webpack.HotModuleReplacementPlugin(),
   ],
 };
 
